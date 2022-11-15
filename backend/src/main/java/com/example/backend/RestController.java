@@ -18,9 +18,14 @@ private final RestService restService;
         return restService.getPriceFromFinnhub();
     }
 
-    @Scheduled(cron = "* */5 * * * *")
+    @Scheduled(cron = "0 */5 * * * *")
     public void resetCache5min() {
         restService.resetCache();
+        restService.getPriceFromFinnhub();
+    }
+
+    @Scheduled(fixedRate = 60L * 1000L, initialDelay=5000)
+    public void getPriceFromFinnhubDelay() {
         restService.getPriceFromFinnhub();
     }
 }

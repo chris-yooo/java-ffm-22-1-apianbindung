@@ -3,7 +3,6 @@ package com.example.backend;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -16,7 +15,6 @@ public class RestService {
     static final String CACHE_KEY = "CACHE_KEY";
 
     @Cacheable(CACHE_KEY)
-
     public RestOut getPriceFromFinnhub() {
         System.out.println("Methode wurde aufgerufen");
         ResponseEntity<Rest> rest = webclient.get()
@@ -35,8 +33,5 @@ public class RestService {
     public void resetCache() {
     }
 
-    @Scheduled(fixedDelay = 2000)
-    public void getPriceFromFinnhubDelay() {
-        getPriceFromFinnhub();
-    }
+
 }
