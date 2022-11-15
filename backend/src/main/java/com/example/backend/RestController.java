@@ -24,7 +24,7 @@ private final RestService restService;
         restService.getPriceFromFinnhub();
     }
 
-    @Scheduled(fixedRate = 60L * 1000L, initialDelay=5000)
+    @Scheduled(fixedRate = Long.MAX_VALUE, initialDelay=5000)
     public void getPriceFromFinnhubDelay() {
         restService.getPriceFromFinnhub();
     }
